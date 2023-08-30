@@ -17,3 +17,4 @@ function logTodo({ id, userId, title, completed }: Todo) {
     `id: ${id}, userId: ${userId}, title: ${title}, completed: ${completed}`
   );
 }
+
