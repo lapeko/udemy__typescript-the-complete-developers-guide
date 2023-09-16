@@ -25,6 +25,11 @@ router.get("/login", (req, res) =>
 );
 
 router.post("/login", (req, res) => {
-  console.log(req.body);
-  res.send("Ok");
+  const { password, email } = req.body as Record<string, string | undefined>;
+  const isAuthenticated = email === "a@a.com" && password === "1234";
+  if (isAuthenticated) {
+    req.session = { loggedIn: true };
+    res.redirect("/");
+  }
+  else res.status(401).send('Invalid email or password');
 });
