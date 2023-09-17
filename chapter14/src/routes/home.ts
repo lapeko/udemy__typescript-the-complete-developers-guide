@@ -4,10 +4,10 @@ export const homeRouter = Router();
 
 homeRouter.get("/", (req, res) => {
   if (req.session?.loggedIn) return res.send(`
-      <form action="/logout" method="POST" >
+      <div>
         <p>You are logged in</p>
-         <button>Log out</button>
-      </form>
+        <a href="/logout">Log out</button>
+      </div>
     `);
   res.send(`
       <div>
