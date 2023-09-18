@@ -1,4 +1,3 @@
-@classDecorator
 class Boat {
   color: string = "red";
 
@@ -6,17 +5,24 @@ class Boat {
     return `This boats color is ${this.color}`;
   }
 
-  @testDecorator
+  @errorLogger("Oops. An error happened =(")
   pilot(): void {
+    throw new Error("Error !");
     console.log("swish");
   }
 }
 
-function classDecorator(constructor: Function) {
-  console.log(constructor);
+function errorLogger(message: string) {
+  return function (target: any, key: string, desc: PropertyDescriptor) {
+    const method = desc.value;
+    desc.value = function () {
+      try {
+        method();
+      } catch (e) {
+        console.log(message, e);
+      }
+    };
+  };
 }
 
-function testDecorator(target: any, key: string) {
-  console.log("target:", target);
-  console.log("key:", key);
-}
+new Boat().pilot();
