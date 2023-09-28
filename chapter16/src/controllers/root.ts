@@ -1,8 +1,13 @@
+import { Request, Response } from 'express';
 import { controller } from "./decorators/controller";
+import { get } from './decorators/methods';
 
-@controller("")
-class HomeController {
-  constructor() {}
+@controller("/")
+export class RootController {
+  @get("/")
+  getRoot(req: Request, res: Response) {
+    res.send("100500");
+  }
 }
 // homeRouter.get("/", (req, res) => {
 //   if (req.session?.loggedIn) return res.send(`
