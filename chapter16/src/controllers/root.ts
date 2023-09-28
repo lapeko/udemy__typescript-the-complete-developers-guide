@@ -6,20 +6,17 @@ import { get } from './decorators/methods';
 export class RootController {
   @get("/")
   getRoot(req: Request, res: Response) {
-    res.send("100500");
+    if (req.session?.loggedIn) return res.send(`
+      <div>
+        <p>You are logged in</p>
+        <a href="/logout">Log out</button>
+      </div>
+    `);
+    res.send(`
+      <div>
+        <p>You are logged out</p>
+        <a href="/login">Log in</a>
+      </div>
+    `)
   }
 }
-// homeRouter.get("/", (req, res) => {
-//   if (req.session?.loggedIn) return res.send(`
-//       <div>
-//         <p>You are logged in</p>
-//         <a href="/logout">Log out</button>
-//       </div>
-//     `);
-//   res.send(`
-//       <div>
-//         <p>You are logged out</p>
-//         <a href="/login">Log in</a>
-//       </div>
-//     `)
-// });
