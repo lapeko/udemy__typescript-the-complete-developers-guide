@@ -3,7 +3,7 @@ import { controller } from "./decorators/controller";
 import { get } from './decorators/methods';
 
 @controller("/")
-export class RootController {
+class RootController {
   @get("/")
   getRoot(req: Request, res: Response) {
     if (req.session?.loggedIn) return res.send(`
