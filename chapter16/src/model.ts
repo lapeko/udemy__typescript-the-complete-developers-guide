@@ -5,3 +5,9 @@ export enum Method {
     Delete = "delete",
     Patch = "patch",
 }
+
+export enum MetadataKey {
+    Path = "path",
+    Method = "method",
+    Middlewares = "middlewares",
+}
