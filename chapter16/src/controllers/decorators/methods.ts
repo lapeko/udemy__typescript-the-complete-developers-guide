@@ -3,8 +3,8 @@ import { Method, MetadataKey } from "../../model";
 
 const buildMethodDecorator = (method: Method) => (path: string) =>
     (target: any, key: string, descriptor: PropertyDescriptor) => {
-        Reflect.defineMetadata(MetadataKey.Path, path, target.constructor.prototype, key);
-        Reflect.defineMetadata(MetadataKey.Method, method, target.constructor.prototype, key);
+        Reflect.defineMetadata(MetadataKey.Path, path, target, key);
+        Reflect.defineMetadata(MetadataKey.Method, method, target, key);
     }
 
 export const get = buildMethodDecorator(Method.Get);
