@@ -10,4 +10,5 @@ export enum MetadataKey {
     Path = "path",
     Method = "method",
     Middlewares = "middlewares",
+    RequiredBodyProps = "requiredBodyProps",
 }

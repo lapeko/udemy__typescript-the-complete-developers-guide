@@ -1,8 +1,8 @@
-import "reflect-metadata";
-import { Method, MetadataKey } from "../../model";
+import { Method, MetadataKey } from "../model";
 
 const buildMethodDecorator = (method: Method) => (path: string) =>
     (target: any, key: string, descriptor: PropertyDescriptor) => {
+        console.log(descriptor.value);
         Reflect.defineMetadata(MetadataKey.Path, path, target, key);
         Reflect.defineMetadata(MetadataKey.Method, method, target, key);
     }

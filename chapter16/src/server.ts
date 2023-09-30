@@ -1,7 +1,7 @@
 import express from "express";
 import cookieSession from "cookie-session";
 import { appRouter } from "../app-router";
-import "./controllers/root";
+import "./controllers";
 
 const app = express();
 
